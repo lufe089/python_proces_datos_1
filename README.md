@@ -1,6 +1,6 @@
 <div align="center">
 
-# Sesión 1 · Entorno, Git, GitHub Classroom y fundamentos de Python
+# Sesión · Entorno, Git, GitHub Classroom y fundamentos de Python
 
 | Curso | Python Intermedio para Análisis de Datos · DIAN 2026 |
 |---|---|
@@ -520,97 +520,6 @@ git push
 ```
 
 Verifica en github.com que el archivo en el repositorio ahora incluye tu librería.
-
-
-### Del notebook al proyecto: ordenar para poder reutilizar
-
-En un notebook es común escribir una celda, ejecutarla, ver el resultado y seguir con la siguiente. Ese flujo es cómodo para explorar: permite probar una idea, revisar una tabla, graficar una columna o confirmar rápidamente si una transformación funciona.
-
-Cuando el trabajo empieza a repetirse, ese mismo flujo comienza a mostrar límites. Un análisis de datos no suele terminar en una sola ejecución. Los archivos cambian, llegan nuevas versiones, aparecen errores, se piden ajustes y otra persona necesita entender qué se hizo. En ese momento, el código deja de ser una prueba aislada y se convierte en un proceso que debe poder repetirse.
-
-Piensa en una base de declaraciones. Primero llega un archivo CSV. Luego llega una versión corregida. Después alguien pide filtrar solo ciertos períodos, guardar un resumen por municipio y generar una salida para revisar. Si todo está en un notebook, mezclado con pruebas, gráficos temporales, celdas ejecutadas en distinto orden y archivos guardados en cualquier carpeta, reconstruir el proceso se vuelve difícil.
-
-En un proyecto organizado, cada cosa tiene un lugar:
-
-```text
-data/input/     archivos que entran al proceso
-data/output/    archivos generados por el proceso
-src/            funciones reutilizables
-main.py         punto de entrada para ejecutar el proyecto
-requirements.txt librerías necesarias
-README.md       instrucciones para usar el proyecto
-```
-
-La carpeta `data/input/` guarda los archivos de entrada. Allí deben estar los datos originales o los archivos que el programa necesita leer. La carpeta `data/output/` guarda los resultados: archivos limpios, resúmenes, reportes o exportaciones. Esta separación evita sobrescribir por accidente un archivo original y permite saber qué produjo el código.
-
-La carpeta `src/` contiene funciones. Una función bien escrita puede usarse muchas veces: desde `main.py`, desde una prueba, desde otro archivo o incluso desde un notebook. Por ejemplo, una función para limpiar nombres de columnas puede aplicarse hoy sobre una base pequeña y mañana sobre una base más grande sin volver a escribir la lógica.
-
-`main.py` cumple otro papel: coordina la ejecución. Allí no debería quedar todo el detalle del procesamiento. Su trabajo es llamar funciones, organizar el flujo y permitir que el usuario ejecute opciones concretas. Esta separación ayuda a leer el proyecto: una persona puede abrir `main.py` para entender el recorrido general y luego entrar a `src/utils.py` para revisar cómo se implementa cada parte.
-
-Este cambio modifica la forma de trabajar. Ya no se escribe código solo para ejecutarlo una vez y ver qué pasa. Se escribe código pensando en que pueda volver a ejecutarse con otros datos, revisarse después, corregirse sin dañar todo el archivo y compartirse con otra persona. Las entradas y salidas quedan ordenadas, las funciones quedan disponibles para nuevas sesiones y el historial de Git muestra cómo fue creciendo el proyecto.
-
-Un notebook puede seguir siendo útil para explorar. El proyecto organizado sirve cuando esa exploración debe convertirse en un proceso repetible.
-
-### Práctica guiada · ¿Qué tan fácil sería trabajar sobre este proyecto?
-
-Antes de empezar a modificar nuestro propio repositorio, revisaremos tres proyectos públicos en GitHub que usan notebooks para análisis de datos. La intención es mirar los repositorios como lo haría una persona que llega por primera vez y necesita continuar el trabajo de alguien más.
-
-Trabajen en parejas o grupos de tres. Abran los siguientes repositorios:
-
-1. [Practical pandas projects](https://github.com/schlende/practical-pandas-projects)
-2. [Python Diwali Sales Analysis](https://github.com/Divyanshu-RS/Python_Diwali_Sales_Analysis)
-3. [Beginner Data Analysis Project](https://github.com/punneko/beginner-data-analysis-project)
-
-Durante 15 minutos exploren los tres repositorios sin ejecutar nada todavía. Revisen el README, los notebooks, los archivos de datos, las carpetas y los nombres de archivos. Imaginen que alguien les pide hacer una mejora pequeña, por ejemplo:
-
-* agregar una nueva visualización;
-* cambiar el archivo de entrada;
-* corregir una transformación de datos;
-* guardar un nuevo archivo de salida;
-* explicar a otra persona cómo ejecutar el análisis;
-* reutilizar una parte del código en otro proyecto.
-
-Respondan estas preguntas para cada repositorio:
-
-| Pregunta                                                                                          | Repositorio 1 | Repositorio 2 | Repositorio 3 |
-| ------------------------------------------------------------------------------------------------- | ------------- | ------------- | ------------- |
-| ¿El README explica qué hace el proyecto?                                                          |               |               |               |
-| ¿Se entiende por dónde empezar?                                                                   |               |               |               |
-| ¿Los datos de entrada están ubicados en una carpeta clara?                                        |               |               |               |
-| ¿Los resultados o salidas están separados de los datos originales?                                |               |               |               |
-| ¿Hay un archivo `requirements.txt` o instrucciones para instalar librerías?                       |               |               |               |
-| ¿Los notebooks tienen nombres descriptivos?                                                       |               |               |               |
-| ¿El código parece fácil de reutilizar fuera del notebook?                                         |               |               |               |
-| ¿Se puede identificar qué parte carga datos, qué parte transforma y qué parte muestra resultados? |               |               |               |
-| ¿Qué sería difícil si tuvieran que hacer mantenimiento?                                           |               |               |               |
-| ¿Qué mejora harían primero en la organización del proyecto?                                       |               |               |               |
-
-Después de completar la tabla, asignen una calificación de 1 a 5 a cada repositorio:
-
-| Calificación | Criterio                                                                                                                   |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| 1            | Sería difícil empezar. No queda claro qué abrir, qué instalar o qué ejecutar.                                              |
-| 2            | Se entiende la idea general, pero faltan instrucciones o hay archivos mezclados.                                           |
-| 3            | Se puede trabajar con esfuerzo. Hay partes claras y otras confusas.                                                        |
-| 4            | Es fácil iniciar. La estructura ayuda a entender el proyecto.                                                              |
-| 5            | Es muy fácil continuar el trabajo. Hay instrucciones, orden, nombres claros y separación entre entradas, código y salidas. |
-
-
-#### Cierre de la práctica
-
-Después de revisar los tres repositorios, vuelvan al repositorio del curso y observen su estructura:
-
-```text
-data/input/
-data/output/
-src/
-main.py
-requirements.txt
-README.md
-```
-
-> Si una persona nueva llegara a tu proyecto dentro de tres meses, ¿qué necesitaría encontrar para empezar a trabajar sin pedirte explicaciones?
-
 
 ## Python como lenguaje
 
@@ -1625,6 +1534,95 @@ Una variable bandera es un booleano que empieza en `False` y cambia a `True` cua
 **Ejercicio:** `generar_combinaciones(municipios, estados)` → genera todas las combinaciones posibles como pares de cadenas. Usa ciclos anidados.
 
 ---
+## Organización de código - del notebook al proyecto: ordenar para poder reutilizar
+
+En un notebook es común escribir una celda, ejecutarla, ver el resultado y seguir con la siguiente. Ese flujo es cómodo para explorar: permite probar una idea, revisar una tabla, graficar una columna o confirmar rápidamente si una transformación funciona.
+
+Cuando el trabajo empieza a repetirse, ese mismo flujo comienza a mostrar límites. Un análisis de datos no suele terminar en una sola ejecución. Los archivos cambian, llegan nuevas versiones, aparecen errores, se piden ajustes y otra persona necesita entender qué se hizo. En ese momento, el código deja de ser una prueba aislada y se convierte en un proceso que debe poder repetirse.
+
+Piensa en una base de declaraciones. Primero llega un archivo CSV. Luego llega una versión corregida. Después alguien pide filtrar solo ciertos períodos, guardar un resumen por municipio y generar una salida para revisar. Si todo está en un notebook, mezclado con pruebas, gráficos temporales, celdas ejecutadas en distinto orden y archivos guardados en cualquier carpeta, reconstruir el proceso se vuelve difícil.
+
+En un proyecto organizado, cada cosa tiene un lugar:
+
+```text
+data/input/     archivos que entran al proceso
+data/output/    archivos generados por el proceso
+src/            funciones reutilizables
+main.py         punto de entrada para ejecutar el proyecto
+requirements.txt librerías necesarias
+README.md       instrucciones para usar el proyecto
+```
+
+La carpeta `data/input/` guarda los archivos de entrada. Allí deben estar los datos originales o los archivos que el programa necesita leer. La carpeta `data/output/` guarda los resultados: archivos limpios, resúmenes, reportes o exportaciones. Esta separación evita sobrescribir por accidente un archivo original y permite saber qué produjo el código.
+
+La carpeta `src/` contiene funciones. Una función bien escrita puede usarse muchas veces: desde `main.py`, desde una prueba, desde otro archivo o incluso desde un notebook. Por ejemplo, una función para limpiar nombres de columnas puede aplicarse hoy sobre una base pequeña y mañana sobre una base más grande sin volver a escribir la lógica.
+
+`main.py` cumple otro papel: coordina la ejecución. Allí no debería quedar todo el detalle del procesamiento. Su trabajo es llamar funciones, organizar el flujo y permitir que el usuario ejecute opciones concretas. Esta separación ayuda a leer el proyecto: una persona puede abrir `main.py` para entender el recorrido general y luego entrar a `src/utils.py` para revisar cómo se implementa cada parte.
+
+Este cambio modifica la forma de trabajar. Ya no se escribe código solo para ejecutarlo una vez y ver qué pasa. Se escribe código pensando en que pueda volver a ejecutarse con otros datos, revisarse después, corregirse sin dañar todo el archivo y compartirse con otra persona. Las entradas y salidas quedan ordenadas, las funciones quedan disponibles para nuevas sesiones y el historial de Git muestra cómo fue creciendo el proyecto.
+
+Un notebook puede seguir siendo útil para explorar. El proyecto organizado sirve cuando esa exploración debe convertirse en un proceso repetible.
+
+### Práctica guiada · ¿Qué tan fácil sería trabajar sobre este proyecto?
+
+Antes de empezar a modificar nuestro propio repositorio, revisaremos tres proyectos públicos en GitHub que usan notebooks para análisis de datos. La intención es mirar los repositorios como lo haría una persona que llega por primera vez y necesita continuar el trabajo de alguien más.
+
+Trabajen en parejas o grupos de tres. Abran los siguientes repositorios:
+
+1. [Practical pandas projects](https://github.com/schlende/practical-pandas-projects)
+2. [Python Diwali Sales Analysis](https://github.com/Divyanshu-RS/Python_Diwali_Sales_Analysis)
+3. [Beginner Data Analysis Project](https://github.com/punneko/beginner-data-analysis-project)
+
+Durante 15 minutos exploren los tres repositorios sin ejecutar nada todavía. Revisen el README, los notebooks, los archivos de datos, las carpetas y los nombres de archivos. Imaginen que alguien les pide hacer una mejora pequeña, por ejemplo:
+
+* agregar una nueva visualización;
+* cambiar el archivo de entrada;
+* corregir una transformación de datos;
+* guardar un nuevo archivo de salida;
+* explicar a otra persona cómo ejecutar el análisis;
+* reutilizar una parte del código en otro proyecto.
+
+Respondan estas preguntas para cada repositorio:
+
+| Pregunta                                                                                          | Repositorio 1 | Repositorio 2 | Repositorio 3 |
+| ------------------------------------------------------------------------------------------------- | ------------- | ------------- | ------------- |
+| ¿El README explica qué hace el proyecto?                                                          |               |               |               |
+| ¿Se entiende por dónde empezar?                                                                   |               |               |               |
+| ¿Los datos de entrada están ubicados en una carpeta clara?                                        |               |               |               |
+| ¿Los resultados o salidas están separados de los datos originales?                                |               |               |               |
+| ¿Hay un archivo `requirements.txt` o instrucciones para instalar librerías?                       |               |               |               |
+| ¿Los notebooks tienen nombres descriptivos?                                                       |               |               |               |
+| ¿El código parece fácil de reutilizar fuera del notebook?                                         |               |               |               |
+| ¿Se puede identificar qué parte carga datos, qué parte transforma y qué parte muestra resultados? |               |               |               |
+| ¿Qué sería difícil si tuvieran que hacer mantenimiento?                                           |               |               |               |
+| ¿Qué mejora harían primero en la organización del proyecto?                                       |               |               |               |
+
+Después de completar la tabla, asignen una calificación de 1 a 5 a cada repositorio:
+
+| Calificación | Criterio                                                                                                                   |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| 1            | Sería difícil empezar. No queda claro qué abrir, qué instalar o qué ejecutar.                                              |
+| 2            | Se entiende la idea general, pero faltan instrucciones o hay archivos mezclados.                                           |
+| 3            | Se puede trabajar con esfuerzo. Hay partes claras y otras confusas.                                                        |
+| 4            | Es fácil iniciar. La estructura ayuda a entender el proyecto.                                                              |
+| 5            | Es muy fácil continuar el trabajo. Hay instrucciones, orden, nombres claros y separación entre entradas, código y salidas. |
+
+
+#### Cierre de la práctica
+
+Después de revisar los tres repositorios, vuelvan al repositorio del curso y observen su estructura:
+
+```text
+data/input/
+data/output/
+src/
+main.py
+requirements.txt
+README.md
+```
+
+> Si una persona nueva llegara a tu proyecto dentro de tres meses, ¿qué necesitaría encontrar para empezar a trabajar sin pedirte explicaciones?
+
 
 ## Troubleshooting
 
@@ -1672,15 +1670,5 @@ Los conceptos de Python que trabajaste hoy, funciones, condicionales, ciclos, li
 **Control de versiones:**
 - Chacon, S., y Straub, B. (2014). *Pro Git* (2.ª ed.). Apress. [git-scm.com/book](https://git-scm.com/book)
 
----
 
-## Ajustes de presentación realizados
 
-| Ajuste | Qué se modificó | Para qué ayuda |
-|---|---|---|
-| Encabezado inicial | La información de curso, duración, modalidad y prerrequisitos se organizó en una tabla de lectura rápida. | Permite identificar los datos generales de la sesión sin leer varios renglones seguidos. |
-| Tabla de contenido | El listado de secciones se ubicó dentro de un bloque desplegable. | Reduce la extensión visual inicial del README y facilita revisar la estructura completa. |
-| Bloques de pausa | Las secciones de **▶ Pausa y piensa** se marcaron como avisos visuales. | Hace más visible cada momento de reflexión durante la lectura. |
-| Avisos técnicos | Algunas notas operativas se marcaron como bloques de nota o advertencia. | Ayuda a diferenciar instrucciones, recordatorios y explicaciones. |
-| Ejemplo de `TODO` | El comentario `# TODO` se presentó como bloque de código y se resaltaron términos técnicos con backticks. | Facilita distinguir el texto explicativo del código que debe observarse. |
-| Conservación del contenido | Se mantuvo la redacción del material y se hicieron ajustes de formato en Markdown. | El README conserva su contenido original, pero queda más cómodo para revisar en GitHub. |
