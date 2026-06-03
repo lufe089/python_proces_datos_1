@@ -7,6 +7,7 @@
 | Duración | 4 horas |
 | Modalidad | Virtual sincrónico |
 | Prerrequisitos | Ninguno · solo un navegador actualizado y conexión a internet |
+| Participante |  |
 
 </div>
 
@@ -322,10 +323,10 @@ Es el punto de entrada del proyecto: el archivo que se ejecuta cuando alguien es
 
 ---
 ### 🔁 Práctica guiada · Git
-Antes de instalar nada, guarda el primer registro de que estás aquí. Abre `README.md` en el editor, desplázate hasta el final y agrega una línea con tu nombre:
+Antes de instalar nada, guarda el primer registro de que estás aquí. Abre `README.md` en el editor, desplázate al inicio  y agrega en la tabla inicial tu nombre. La línea se ve así:
 
 ```
-Participante: Tu Nombre
+| Participante |  |
 ```
 
 Guarda con `Ctrl + S`. Luego en la terminal:
