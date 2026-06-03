@@ -1,0 +1,16 @@
+# Dependencias del proyecto - Python DIAN 2026
+#
+# Cómo instalar:
+#   1. Activa el ambiente virtual:  source .venv/bin/activate
+#   2. Instala:                     pip install -r requirements.txt
+#
+# Cómo agregar una librería:
+#   1. Busca el nombre exacto en https://pypi.org
+#   2. Agrega una línea con el formato:  nombre==version
+#   3. Ejecuta pip install -r requirements.txt de nuevo
+#   4. Haz git add, commit y push para guardar el cambio
+
+pandas==2.3.0
+openpyxl==3.2.0
+
+# Agrega aquí la librería que elijas en el ejercicio de investigación:
