@@ -1654,7 +1654,7 @@ README.md
 
 El entorno está montado, las dependencias documentadas y el primer historial de Git registrado. El proyecto tiene un menú funcional que irá creciendo en cada sesión.
 
-Los conceptos de Python que trabajaste hoy, funciones, condicionales, ciclos, listas y diccionarios, son las piezas con las que están construidos todos los módulos que vienen: el cargador de datos, el transformador, el validador. La diferencia entre la Sesión 1 y la Sesión 9 no es que aparezcan conceptos completamente nuevos; es que esas mismas piezas se combinan de formas más sofisticadas sobre datos reales.
+Los conceptos de Python que trabaja esta guía son las piezas con las que están construidos todos los módulos que vienen: el cargador de datos, el transformador, el validador, a medida que avanza el curso estas piezas y otros conceptos se van articulando progresivamente. 
 
 ---
 
