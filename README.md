@@ -729,7 +729,7 @@ Una vez implementada, descomenta la opción 4 del menú en `main.py`
 
 ## Encadenamiento de funciones
 
-Encadenar funciones es pasar el resultado de una como argumento de otra. Tiene dos formas en Python: composición explícita y encadenamiento de métodos.
+Encadenar funciones es pasar el resultado de una función como argumento de otra. Tiene dos formas en Python: composición explícita y encadenamiento de métodos.
 
 ### Composición explícita
 
@@ -755,7 +755,7 @@ def validar_nit(nit):
     return es_longitud_valida and solo_digitos
 ```
 
-Cada función hace una sola cosa. `validar_nit` llama a las otras dos y combina sus resultados. Si la regla de longitud cambia, solo hay que modificar `validar_longitud`.  Permitiendo que cada función sea responsable de una sola cosa puede se facilita la mantenibilidad del código fuente y se favorece la reutilización.
+Cada función hace una sola cosa. `validar_nit` llama a las otras dos y combina sus resultados. Si la regla de longitud cambia, solo hay que modificar `validar_longitud`.  De esta manera es posible que cada función sea responsable de una sola cosa puede se facilita la mantenibilidad del código fuente y se favorece la reutilización.
 
 ### Encadenamiento de métodos
 
